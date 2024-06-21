@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("email")
+@RequestMapping("send-email")
 public class EmailController {
 
     private final EmailService emailService;
