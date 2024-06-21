@@ -2,7 +2,6 @@ package org.example.simpleemail.notification;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.example.simpleemail.email.Email;
 import org.slf4j.Logger;
@@ -24,14 +23,12 @@ public class NotificationService {
         this.jsonMapper = jsonMapper;
     }
 
-    public void notify(Email email) throws InterruptedException {
+    public void notify(Email email) {
 
         ObjectNode objectNode = jsonMapper.createObjectNode();
         objectNode.put("email", email.getBody());
 
-        Thread.sleep(2000);
         LOGGER.info("notifying email {}...", objectNode);
-
         notificationProducer.sendNotification(email);
     }
 }
